@@ -1,0 +1,34 @@
+<configuration packagingData="true">
+    <timestamp key="timestamp" datePattern="yyyy-MM-dd-HH-mm-ssSSS"/>
+    <appender name="aws_cloud_watch_log" class="ca.pjer.logback.AwsLogsAppender">
+        <layout>
+            <pattern>[%date] [%level] %X{AWS-XRAY-TRACE-ID} [%file:%line] : %msg%n</pattern>
+        </layout>
+        <logGroupName>kjh</logGroupName>
+        <logStreamUuidPrefix>kjh-</logStreamUuidPrefix>
+        <logRegion>ap-northeast-2</logRegion>
+        <maxBatchLogEvents>50</maxBatchLogEvents>
+        <maxFlushTimeMillis>30000</maxFlushTimeMillis>
+        <maxBlockTimeMillis>5000</maxBlockTimeMillis>
+        <retentionTimeDays>0</retentionTimeDays>
+        <accessKeyId>${ACCESS_KEY}</accessKeyId>
+        <secretAccessKey>${SECRET_ACCESS_KEY}</secretAccessKey>
+    </appender>
+    <appender name="application_log" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <pattern>[%date] [%level] [%file:%line] : %msg%n</pattern>
+        </encoder>
+    </appender>
+    <root level="INFO">
+        <appender-ref ref="application_log"/>
+    </root>
+    <logger name="com.example.awsxray" level="DEBUG">
+        <appender-ref ref="aws_cloud_watch_log"/>
+    </logger>
+    <logger name="org.hibernate.SQL" level="DEBUG">
+        <appender-ref ref="aws_cloud_watch_log"/>
+    </logger>
+    <logger name="org.hibernate.type.descriptor.sql.BasicBinder" level="TRACE">
+        <appender-ref ref="aws_cloud_watch_log"/>
+    </logger>
+</configuration>

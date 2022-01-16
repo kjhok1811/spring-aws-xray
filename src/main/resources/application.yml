@@ -1,0 +1,18 @@
+spring:
+  jpa:
+    hibernate:
+      ddl-auto: create
+    database: mysql
+    properties:
+      hibernate:
+        format_sql: true
+aws:
+  xray:
+    fixed-segment-name: xray-application
+    prefix-log-name: AWS-XRAY
+    sampling-rules-json: /sampling-rules.json
+    datasource:
+      driver-class-name: com.mysql.cj.jdbc.Driver
+      username: root
+      password: 1234
+      jdbc-url: jdbc:mysql://localhost:3306/mysql?useSSL=false&serverTimezone=UTC&characterEncoding=utf8&allowPublicKeyRetrieval=true
