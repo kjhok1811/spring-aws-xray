@@ -60,7 +60,3 @@
 
 ## 참고링크
 - https://kim-jong-hyun.tistory.com/115
-- https://kim-jong-hyun.tistory.com/116
-- https://kim-jong-hyun.tistory.com/117
-- https://kim-jong-hyun.tistory.com/118
-- https://kim-jong-hyun.tistory.com/119
